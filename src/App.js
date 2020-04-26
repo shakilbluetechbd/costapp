@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import Practice from './views/practice'
 function App() {
   return (
     <div className="App">
@@ -16,7 +17,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          <Practice/>
         </a>
       </header>
     </div>
