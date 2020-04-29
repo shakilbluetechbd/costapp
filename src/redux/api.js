@@ -1,47 +1,47 @@
-// import qs from 'querystrings';
+import qs from 'querystrings';
 // import { consoleLog, isEmptyObject } from '../helpers/utility';
 // import authHelpers from '../helpers/auth';
 
-// export const methodTypes = {
-//   POST: 'POST',
-//   GET: 'GET',
-//   PUT: 'PUT',
-//   DELETE: 'DELETE',
-// };
+export const methodTypes = {
+  POST: 'POST',
+  GET: 'GET',
+  PUT: 'PUT',
+  DELETE: 'DELETE',
+};
 
-// const headers = {
-//   'Content-Type': 'application/json',
-// };
+const headers = {
+  'Content-Type': 'application/json',
+};
 
-// export const call = (methodType, url, data = {}, requireAuth = true) => {
-//   if (requireAuth && !authHelpers.isLoggedIn()) {
-//     throw 'Login required!';
-//   }
+export const call = (methodType, url, data = {}, requireAuth = true) => {
+  // if (requireAuth && !authHelpers.isLoggedIn()) {
+  //   throw 'Login required!';
+  // }
 
-//   if (requireAuth && authHelpers.isLoggedIn()) {
-//     headers.Authorization = `Bearer ${authHelpers.getToken()}`;
-//   }
+  // if (requireAuth && authHelpers.isLoggedIn()) {
+  //   headers.Authorization = `Bearer ${authHelpers.getToken()}`;
+  // }
 
-//   const options = {
-//     method: methodType,
-//     headers,
-//   };
+  const options = {
+    method: methodType,
+    headers,
+  };
 
-//   if (!isEmptyObject(data)) {
-//     if (methodType === methodTypes.GET) {
-//       url = `${url}?${qs.stringify(data)}`;
-//     } else {
-//       options.body = JSON.stringify(data);
-//     }
-//   }
+  // if (!isEmptyObject(data)) {
+    if (methodType === methodTypes.GET) {
+      url = `${url}?${qs.stringify(data)}`;
+    } else {
+      options.body = JSON.stringify(data);
+    }
+  // }
 
-//   consoleLog(methodType, url, 'Options', options);
+  // consoleLog(methodType, url, 'Options', options);
 
-//   return new Promise((resolve, reject) => fetch(url, options)
-//     .then(response => response.json())
-//     .then(response => resolve(response))
-//     .catch(error => reject(error)));
-// };
+  return new Promise((resolve, reject) => fetch(url, options)
+    .then(response => response.json())
+    .then(response => resolve(response))
+    .catch(error => reject(error)));
+};
 
 // export const uploadFile = (url, fileType, file) => {
 

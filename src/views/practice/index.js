@@ -19,7 +19,6 @@ class Practice extends Component {
     //   update.isLoading = props.isLoading;
     // }
     if (props.apparels) {
-      debugger
       update.apparels = props.apparels;
     }
     return update;

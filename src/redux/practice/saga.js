@@ -12,9 +12,9 @@ export function* getApparels() {
       const action = apparelActions.getApparels;
       try {
         // const resp = yield call(services.getApparels, evt.payload);
-        const resp = yield call((data)=>data, "shakil is a good boy");
+        const resp = yield call((data) => data, "shakil is a good boy");
         if (resp) {
-          yield put(action.success({ data: resp}));
+          yield put(action.success({ data: resp }));
         } else {
           yield put(action.failure(resp.errors));
         }

@@ -4,6 +4,7 @@ import createHistory from 'history/createBrowserHistory';
 import PublicRoute from './publicRoute';
 
 import Practice from '../views/practice';
+import Login from '../views/login';
 // import AddProductPage from '../components/product/AddProductPage';
 // import AddUserPage from '../components/user/AddUserPage';
 // import EditProductPage from '../components/product/EditProductPage';
@@ -29,6 +30,7 @@ const AppRouter = () => (
     <div>
       <Switch>
         <PublicRoute path="/" component={Practice} exact={true} /> 
+        <PublicRoute path="/login" component={Login} exact={true} /> 
      {/*   <PrivateRoute path="/admin" component={AdminPage} />
      
       <PrivateRoute path="/addAmount/:id" component={EditProductPage} />
