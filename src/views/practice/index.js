@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../../redux/practice/actions';
+import {clearToken} from '../../helpers/auth'
 
 class Practice extends Component {
   constructor(props) {
@@ -23,12 +24,17 @@ class Practice extends Component {
     }
     return update;
   }
+  logout=()=>{
+    clearToken() ;
+    this.props.history.push('/');
+  }
 
   render() {
     const { apparels } = this.state
     return (
       <div>
         App:{apparels && apparels.data}
+        <button onClick={this.logout}>logout</button>
       </div>
     );
   }

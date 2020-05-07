@@ -1,7 +1,7 @@
 import decode from 'jwt-decode';
 import storage from './storage';
 
-const ID_TOKEN_KEY = 'id_token_short_route_ticketing';
+const ID_TOKEN_KEY = 'id_token_CostApp';
 
 export default {
   isLoggedIn,

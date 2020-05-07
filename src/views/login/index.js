@@ -20,7 +20,7 @@ class Login extends Component {
     update.isLoggedIn = props.isLoggedIn;
 
     if (props.isLoggedIn && !state.isLoggedIn) {
-      debugger
+      props.history.push('/');
     }
     return update;
   }
