@@ -15,10 +15,10 @@
         const action = authActions.login;
         try {
           const resp = yield call(services.login, evt.payload);
-          // const resp = yield call((data) => data, "shakil is a good boy");
           if (!resp.error && resp.access_token) {
             const { access_token } = resp;
             const profile = decodeToken(access_token);
+            setToken(access_token);
             yield put(action.success(access_token, profile));
           } else {
             yield put(action.failure(resp.error));

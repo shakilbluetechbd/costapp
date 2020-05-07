@@ -6,6 +6,7 @@ import PrivateRoute from './privateRoute';
 
 import Practice from '../views/practice';
 import Login from '../views/login';
+import Home from '../views/home';
 
 
 
@@ -16,8 +17,9 @@ const AppRouter = () => (
   <Router history={history}>
     <div>
       <Switch>
-        <PrivateRoute  path="/" component={Practice} exact={true} />
+        <PrivateRoute  path="/practice" component={Practice} exact={true} />
         <PublicRoute path="/login" component={Login} exact={true} /> 
+        <PrivateRoute path="/" component={Home} exact={true} /> 
      {/*   <PrivateRoute path="/admin" component={AdminPage} />
      
       <PrivateRoute path="/addAmount/:id" component={EditProductPage} />

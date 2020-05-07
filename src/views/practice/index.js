@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../../redux/practice/actions';
-import {clearToken} from '../../helpers/auth'
+import {clearToken} from '../../helpers/auth';
 
 class Practice extends Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import { methodTypes, call } from './api';
 // import { getBaseUrl, prefixes } from '../config';
 
-const userService = 'http://calm-depths-13936.herokuapp.com';
+const userService = 'http://costapibd.herokuapp.com/';
 // const productService = getBaseUrl(prefixes.ProductPrefix);
 // const aaumUrl = getBaseUrl(ports.Aaum);
 // const srBaseUrl = getBaseUrl(ports.SR);
