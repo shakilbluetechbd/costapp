@@ -3,6 +3,10 @@ const actions = {
   LOGIN_REQUEST        : 'LOGIN_REQUEST',
   LOGIN_SUCCESS        : 'LOGIN_SUCCESS',
   LOGIN_FAILURE        : 'LOGIN_FAILURE',
+
+  REGISTER_REQUEST        : 'REGISTER_REQUEST',
+  REGISTER_SUCCESS        : 'REGISTER_SUCCESS',
+  REGISTER_FAILURE        : 'REGISTER_FAILURE',
   // SEND_OTP_REQUEST     : 'SEND_OTP_REQUEST',
   // SEND_OTP_SUCCESS     : 'SEND_OTP_SUCCESS',
   // SEND_OTP_FAILURE     : 'SEND_OTP_FAILURE',
@@ -23,6 +27,12 @@ const actions = {
     request: (data)           => ({ type: actions.LOGIN_REQUEST, payload: data }),
     success: (token, profile) => ({ type: actions.LOGIN_SUCCESS, token: token, profile: profile }),
     failure: (errs)           => ({ type: actions.LOGIN_FAILURE, errors: errs })
+  },
+
+  register: {
+    request: (data)           => ({ type: actions.REGISTER_REQUEST, payload: data }),
+    success: (data)           => ({ type: actions.REGISTER_SUCCESS, data: data }),
+    failure: (errs)           => ({ type: actions.REGISTER_FAILURE, errors: errs })
   },
   // lockApp: {
   //   request: ()               => ({ type: actions.LOCK_APP_REQUEST }),

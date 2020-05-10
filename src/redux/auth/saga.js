@@ -29,6 +29,26 @@
       });
   }
 
+  export function* registerRequest() {
+    yield takeEvery(authActions.REGISTER_REQUEST,
+      function* (evt) {
+        const action = authActions.register;
+        try {
+          const resp = yield call(services.register, evt.payload);
+          if (resp.error.length && resp.data) {
+            // const { access_token } = resp;
+            // const profile = decodeToken(access_token);
+            // setToken(access_token);
+            yield put(action.success(resp.data));
+          } else {
+            yield put(action.failure(resp.error));
+          }
+        } catch (ex) {
+          yield put(action.failure([getErrorMessage(ex)]));
+        }
+      });
+  }
+
   export function* loginSuccess() {
     yield takeLatest(authActions.LOGIN_SUCCESS, function* (payload) {
       yield call(setToken, payload.token);
@@ -140,7 +160,8 @@
   export default function* rootSaga() {
     yield all([
       // fork(checkAuthorization),
-      fork(loginRequest),
+      fork(loginRequest), 
+      fork(registerRequest),
       fork(loginSuccess),
       // fork(loginFailure),
       // fork(logout),

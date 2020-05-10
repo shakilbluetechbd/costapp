@@ -1,6 +1,6 @@
 import qs from 'querystrings';
 // import { consoleLog, isEmptyObject } from '../helpers/utility';
-// import authHelpers from '../helpers/auth';
+import authHelpers from '../helpers/auth';
 
 export const methodTypes = {
   POST: 'POST',
@@ -14,13 +14,13 @@ const headers = {
 };
 
 export const call = (methodType, url, data = {}, requireAuth = true) => {
-  // if (requireAuth && !authHelpers.isLoggedIn()) {
-  //   throw 'Login required!';
-  // }
+  if (requireAuth && !authHelpers.isLoggedIn()) {
+    throw 'Login required!';
+  }
 
-  // if (requireAuth && authHelpers.isLoggedIn()) {
-  //   headers.Authorization = `Bearer ${authHelpers.getToken()}`;
-  // }
+  if (requireAuth && authHelpers.isLoggedIn()) {
+    headers.Authorization = `Bearer ${authHelpers.getToken()}`;
+  }
 
   const options = {
     method: methodType,
@@ -29,7 +29,7 @@ export const call = (methodType, url, data = {}, requireAuth = true) => {
 
   // if (!isEmptyObject(data)) {
     if (methodType === methodTypes.GET) {
-      url = `${url}?${qs.stringify(data)}`;
+      // url = `${url}?${qs.stringify(data)}`;
     } else {
       options.body = JSON.stringify(data);
     }

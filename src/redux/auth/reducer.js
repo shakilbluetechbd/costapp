@@ -28,6 +28,31 @@ export default function authReducer(state = initState, action) {
         isLoggedIn: false,
         isLoggingIn: false
       };
+
+    case actions.REGISTER_REQUEST:
+      return {
+        ...state,
+        isRegistering: true,
+        isRegistered: false,
+        errors: null
+      };
+    case actions.REGISTER_SUCCESS:
+      
+      return {
+        ...state,
+        profile: action.data,
+        isRegistering: false,
+        isRegistered: true,
+        errors: null
+      };
+    case actions.REGISTER_FAILURE:
+      return {
+        ...initState,
+       
+        errors: action.errors,
+        isRegistering: false,
+        isRegistered: false
+      };
     // case actions.REFRESH_TOKEN_REQUEST:
     //   return {
     //     ...state

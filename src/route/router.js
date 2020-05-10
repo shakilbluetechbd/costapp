@@ -6,7 +6,11 @@ import PrivateRoute from './privateRoute';
 
 import Practice from '../views/practice';
 import Login from '../views/login';
+import Register from '../views/register';
 import Home from '../views/home';
+import NewCost from '../views/cost/create';
+import EditCost from '../views/cost/edit';
+import Cost from '../views/cost';
 
 
 
@@ -18,8 +22,12 @@ const AppRouter = () => (
     <div>
       <Switch>
         <PrivateRoute  path="/practice" component={Practice} exact={true} />
-        <PublicRoute path="/login" component={Login} exact={true} /> 
+        <PublicRoute path="/login" component={Login} exact={true} />
+        <PublicRoute path="/register" component={Register} exact={true} />  
         <PrivateRoute path="/" component={Home} exact={true} /> 
+        <PrivateRoute path="/Cost/create" component={NewCost} exact={true} /> 
+        <PrivateRoute path="/Cost" component={Cost} exact={true} /> 
+        <PrivateRoute path="/Cost/:id" component={EditCost} exact={true} /> 
      {/*   <PrivateRoute path="/admin" component={AdminPage} />
      
       <PrivateRoute path="/addAmount/:id" component={EditProductPage} />
