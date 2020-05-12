@@ -66,8 +66,8 @@ export function* updateCost() {
       const { id, data } = evt.payload;
       try {
         const resp = yield call(services.updateCost, id, data);
-        if (isEmptyObject(resp.errors) && resp.result) {
-          yield put(action.success(resp.result));
+        if ( resp.data) {
+          yield put(action.success(resp.data));
         } else {
           yield put(action.failure(resp.errors));
         }

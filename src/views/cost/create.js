@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { message, Button, Space } from 'antd';
-import Form from './form';
+import Form from './form2';
 import Base from '../../components/base';
 import costActions from '../../redux/cost/actions';
 
@@ -26,8 +26,9 @@ class create extends Component {
     update.isCreated = props.isCreated;
 
     if (props.isCreated && !state.isCreated) {
-      // props.history.push('/');
       message.success('This is a success message');
+      props.history.push('/cost');
+
     }
     return update;
   }

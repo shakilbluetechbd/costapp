@@ -73,6 +73,8 @@ class create extends Component {
       {
         title: 'Name',
         dataIndex: 'name',
+        width: '30%',
+
         key: 'name',
       },
       {
@@ -85,7 +87,7 @@ class create extends Component {
         title: 'Details',
         dataIndex: 'details',
         key: 'details',
-        width: '40%',
+        width: '30%',
       },
       {
         title: 'Date',
@@ -96,9 +98,9 @@ class create extends Component {
       {
         title: 'Action',
         dataIndex: 'id',
-        width: '20%',
+        width: '10%',
         key: 'id',
-        render:id=><Button onClick={()=>this.props.history.push(`/cost/${id}`)}>Edit</Button>,
+        render:id=><Button type="primary" onClick={()=>this.props.history.push(`/cost/${id}`)}>Edit</Button>,
 
       },
     ];

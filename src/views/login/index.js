@@ -38,10 +38,10 @@ class Login extends Component {
       username: e.username,
       password: e.password,
       grant_type: "password",
-      // client_id: "11",
-      // client_secret: "ViLhWdE0DHVMZGvx0IpH7Gd78SgrQWyFvXbnqzHC",
-      client_id: "2",
-      client_secret: "ME4jOIZJRHgN0vCUwPrBU0Y55ehy9yShtLP5Pqvb",
+      client_id: "11",
+      client_secret: "ViLhWdE0DHVMZGvx0IpH7Gd78SgrQWyFvXbnqzHC",
+      // client_id: "2",
+      // client_secret: "ME4jOIZJRHgN0vCUwPrBU0Y55ehy9yShtLP5Pqvb",
     }
     this.props.login(data);
   }

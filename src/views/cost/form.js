@@ -35,20 +35,20 @@ class form extends Component {
     const { cost } = this.props;
     const { name, value, details, date } = cost || '';
     return (
-      <Form {...layout} name="nest-messages" onFinish={this.onFinish} validateMessages={validateMessages}>
+      <Form  {...layout} name="nest-messages" onFinish={this.onFinish} validateMessages={validateMessages}>
         <Form.Item name={'name'} label="Name" rules={[{ required: true }]} initialValue={name}>
-          <Input />
+          <Input  />
         </Form.Item>
 
         <Form.Item name={'details'} label="Details" rules={[{ required: true }]} initialValue={details}>
-          <Input.TextArea />
+          <Input.TextArea value={'here is  a descrition'} />
         </Form.Item>
 
-        <Form.Item name="date" label="DatePicker" rules={[{ required: true }]} >
-          <DatePicker defaultValue={moment(date,'YYYY-MM-DD')} />
+        <Form.Item name="date" label="DatePicker" rules={[{ required: true }]} initialValue={date && moment(date,'YYYY-MM-DD')}>
+          <DatePicker  />
         </Form.Item>
 
-        <Form.Item name={'value'} label="Value" rules={[{ required: true, type: 'number', min: 0 }]} initialValue={value}>
+        <Form.Item name={'value'} label="Value" rules={[{ required: true, type: 'number', min: 0 }]} initialValue={value && parseFloat(value)}>
           <InputNumber />
         </Form.Item>
         <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>

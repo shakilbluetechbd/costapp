@@ -27,6 +27,7 @@ export default function rolesReducer(state = initState, action) {
       return {
         ...state,
         isLoading: true,
+        cost:'',
       };
     case actions.GET_COST_SUCCESS:
       
