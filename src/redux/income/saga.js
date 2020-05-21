@@ -1,16 +1,16 @@
 import {
   all, takeEvery, takeLatest, put, fork, call,
 } from 'redux-saga/effects';
-import costActions from './actions';
+import incomeActions from './actions';
 import services from '../services';
 import { getErrorMessage, isEmptyObject } from '../../helpers/utility';
 
-export function* getCosts() {
-  yield takeLatest(costActions.GET_COSTS_REQUEST,
+export function* getIncomes() {
+  yield takeLatest(incomeActions.GET_INCOMES_REQUEST,
     function* (evt) {
-      const action = costActions.getCosts;
+      const action = incomeActions.getIncomes;
       try {
-        const resp = yield call(services.getCosts, evt.payload);
+        const resp = yield call(services.getIncomes, evt.payload);
         if (resp.success) {
           yield put(action.success({ data: resp.result }));
         } else {
@@ -22,13 +22,13 @@ export function* getCosts() {
     });
 }
 
-export function* getCost() {
-  yield takeLatest(costActions.GET_COST_REQUEST,
+export function* getIncome() {
+  yield takeLatest(incomeActions.GET_INCOME_REQUEST,
     function* (evt) {
-      const action = costActions.getCost;
+      const action = incomeActions.getIncome;
       const { id } = evt.payload;
       try {
-        const resp = yield call(services.getCost, id);
+        const resp = yield call(services.getIncome, id);
         if (resp.success) {
           yield put(action.success(resp.result));
         } else {
@@ -41,12 +41,12 @@ export function* getCost() {
 }
 
 
-export function* createCost() {
-  yield takeLatest(costActions.CREATE_COST_REQUEST,
+export function* createIncome() {
+  yield takeLatest(incomeActions.CREATE_INCOME_REQUEST,
     function* (evt) {
-      const action = costActions.createCost;
+      const action = incomeActions.createIncome;
       try {
-        const resp = yield call(services.createCost, evt.payload);
+        const resp = yield call(services.createIncome, evt.payload);
         if (resp.success) {
           yield put(action.success(resp.result));
         } else {
@@ -59,13 +59,13 @@ export function* createCost() {
 }
 
 
-export function* updateCost() {
-  yield takeEvery(costActions.UPDATE_COST_REQUEST,
+export function* updateIncome() {
+  yield takeEvery(incomeActions.UPDATE_INCOME_REQUEST,
     function* (evt) {
-      const action = costActions.updateCost;
+      const action = incomeActions.updateIncome;
       const { id, data } = evt.payload;
       try {
-        const resp = yield call(services.updateCost, id, data);
+        const resp = yield call(services.updateIncome, id, data);
         if (resp.success) {
           yield put(action.success(resp.result));
         } else {
@@ -79,9 +79,9 @@ export function* updateCost() {
 
 export default function* rootSaga() {
   yield all([
-    fork(getCosts),
-    fork(getCost),
-    fork(updateCost),
-    fork(createCost),
+    fork(getIncomes),
+    fork(getIncome),
+    fork(updateIncome),
+    fork(createIncome),
   ]);
 }

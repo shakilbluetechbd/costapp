@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { message, Button, Space } from 'antd';
 import Form from './form2';
 import Base from '../../components/base';
-import costActions from '../../redux/cost/actions';
+import loanActions from '../../redux/loan/actions';
 
 
 
@@ -27,21 +27,21 @@ class create extends Component {
 
     if (props.isCreated && !state.isCreated) {
       message.success('This is a success message');
-      props.history.push('/cost');
+      props.history.push('/loan');
 
     }
     return update;
   }
 
   onSubmit=(data)=>{
-    const { createCost } = this.props;
-    createCost(data);
+    const { createLoan } = this.props;
+    createLoan(data);
   }
   
   render() { 
     const { isCreating } = this.props;
     return ( 
-      <Base title="Cost" subtitle="Create" isLoading={isCreating} >
+      <Base title="Loan" subtitle="Create" isLoading={isCreating} >
       <Form onSubmit={this.onSubmit}/>
       </Base>
      );
@@ -50,8 +50,8 @@ class create extends Component {
  
 export default connect(
   state => ({
-    isCreating: state.cost.isCreating,
-    isCreated: state.cost.isCreated,
+    isCreating: state.loan.isCreating,
+    isCreated: state.loan.isCreated,
   }),
-  { createCost: costActions.createCost.request },
+  { createLoan: loanActions.createLoan.request },
 )(create);

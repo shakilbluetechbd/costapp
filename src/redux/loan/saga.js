@@ -1,16 +1,16 @@
 import {
   all, takeEvery, takeLatest, put, fork, call,
 } from 'redux-saga/effects';
-import costActions from './actions';
+import loanActions from './actions';
 import services from '../services';
 import { getErrorMessage, isEmptyObject } from '../../helpers/utility';
 
-export function* getCosts() {
-  yield takeLatest(costActions.GET_COSTS_REQUEST,
+export function* getLoans() {
+  yield takeLatest(loanActions.GET_LOANS_REQUEST,
     function* (evt) {
-      const action = costActions.getCosts;
+      const action = loanActions.getLoans;
       try {
-        const resp = yield call(services.getCosts, evt.payload);
+        const resp = yield call(services.getLoans, evt.payload);
         if (resp.success) {
           yield put(action.success({ data: resp.result }));
         } else {
@@ -22,13 +22,13 @@ export function* getCosts() {
     });
 }
 
-export function* getCost() {
-  yield takeLatest(costActions.GET_COST_REQUEST,
+export function* getLoan() {
+  yield takeLatest(loanActions.GET_LOAN_REQUEST,
     function* (evt) {
-      const action = costActions.getCost;
+      const action = loanActions.getLoan;
       const { id } = evt.payload;
       try {
-        const resp = yield call(services.getCost, id);
+        const resp = yield call(services.getLoan, id);
         if (resp.success) {
           yield put(action.success(resp.result));
         } else {
@@ -41,12 +41,12 @@ export function* getCost() {
 }
 
 
-export function* createCost() {
-  yield takeLatest(costActions.CREATE_COST_REQUEST,
+export function* createLoan() {
+  yield takeLatest(loanActions.CREATE_LOAN_REQUEST,
     function* (evt) {
-      const action = costActions.createCost;
+      const action = loanActions.createLoan;
       try {
-        const resp = yield call(services.createCost, evt.payload);
+        const resp = yield call(services.createLoan, evt.payload);
         if (resp.success) {
           yield put(action.success(resp.result));
         } else {
@@ -59,13 +59,13 @@ export function* createCost() {
 }
 
 
-export function* updateCost() {
-  yield takeEvery(costActions.UPDATE_COST_REQUEST,
+export function* updateLoan() {
+  yield takeEvery(loanActions.UPDATE_LOAN_REQUEST,
     function* (evt) {
-      const action = costActions.updateCost;
+      const action = loanActions.updateLoan;
       const { id, data } = evt.payload;
       try {
-        const resp = yield call(services.updateCost, id, data);
+        const resp = yield call(services.updateLoan, id, data);
         if (resp.success) {
           yield put(action.success(resp.result));
         } else {
@@ -79,9 +79,9 @@ export function* updateCost() {
 
 export default function* rootSaga() {
   yield all([
-    fork(getCosts),
-    fork(getCost),
-    fork(updateCost),
-    fork(createCost),
+    fork(getLoans),
+    fork(getLoan),
+    fork(updateLoan),
+    fork(createLoan),
   ]);
 }

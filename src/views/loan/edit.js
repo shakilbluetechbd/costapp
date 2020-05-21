@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { message, Button, Space, Spin, Skeleton } from 'antd';
 import Form from './form2';
 import Base from '../../components/base';
-import costActions from '../../redux/cost/actions';
+import loanActions from '../../redux/loan/actions';
 
 
 
@@ -18,10 +18,10 @@ class create extends Component {
 
   componentDidMount() {
     const {
-      match, getCost,
+      match, getLoan,
     } = this.props;
     const { id } = match.params;
-    getCost({ id });
+    getLoan({ id });
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -35,32 +35,32 @@ class create extends Component {
     // if (props.isLoading !== state.isLoading) {
     //   update.isLoading = props.isLoading;
     // }
-    if (props.cost && props.cost.id == id) {
-      update.cost = props.cost;
+    if (props.loan && props.loan.id == id) {
+      update.loan = props.loan;
     }
     update.isUpdated = props.isUpdated;
 
     if (props.isUpdated && !state.isUpdated) {
       message.success('This is a success message');
-      props.history.push('/cost');
+      props.history.push('/loan');
 
     }
     return update;
   }
 
   onSubmit = (data) => {
-    const { updateCost, match } = this.props;
+    const { updateLoan, match } = this.props;
     const { id } = match.params;
-    updateCost({ id, data });
+    updateLoan({ id, data });
   }
 
   render() {
-    const { cost } = this.state;
+    const { loan } = this.state;
     const { isLoading, isUpdating } = this.props;
 
     return (
-      <Base title="Cost" subtitle="Edit" isLoading={isLoading} isUpdating={isUpdating} >
-        {cost && <Form cost={cost} onSubmit={this.onSubmit} isLoading={isLoading} isUpdating={isUpdating} />}
+      <Base title="Loan" subtitle="Edit" isLoading={isLoading} isUpdating={isUpdating} >
+        {loan && <Form loan={loan} onSubmit={this.onSubmit} isLoading={isLoading} isUpdating={isUpdating} />}
       </Base>
     );
   }
@@ -69,13 +69,13 @@ class create extends Component {
 export default connect(
   state => ({
     // isLoading: state.newUser.isLoading,
-    isUpdated: state.cost.isUpdated,
-    isUpdating: state.cost.isUpdating,
-    isLoading: state.cost.isLoading,
-    cost: state.cost.cost,
+    isUpdated: state.loan.isUpdated,
+    isUpdating: state.loan.isUpdating,
+    isLoading: state.loan.isLoading,
+    loan: state.loan.loan,
   }),
   {
-    updateCost: costActions.updateCost.request,
-    getCost: costActions.getCost.request,
+    updateLoan: loanActions.updateLoan.request,
+    getLoan: loanActions.getLoan.request,
   },
 )(create);

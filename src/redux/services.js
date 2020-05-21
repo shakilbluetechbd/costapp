@@ -30,6 +30,24 @@ export default {
   getCost: id => call(methodTypes.GET, `${userService}/api/costs/${id}`,true),
   updateCost: (id, data) => call(methodTypes.PUT, `${userService}/api/costs/${id}`, data),
 
+  //income
+  getIncomes: pgn => call(methodTypes.GET, `${userService}/api/incomes?${formatPgn(pgn)}`),
+  createIncome: data => call(methodTypes.POST, `${userService}/api/incomes`, data, true),
+  getIncome: id => call(methodTypes.GET, `${userService}/api/incomes/${id}`,true),
+  updateIncome: (id, data) => call(methodTypes.PUT, `${userService}/api/incomes/${id}`, data),
+
+  //assets
+  getAssets: pgn => call(methodTypes.GET, `${userService}/api/assets?${formatPgn(pgn)}`),
+  createAsset: data => call(methodTypes.POST, `${userService}/api/assets`, data, true),
+  getAsset: id => call(methodTypes.GET, `${userService}/api/assets/${id}`,true),
+  updateAsset: (id, data) => call(methodTypes.PUT, `${userService}/api/assets/${id}`, data),
+
+  //loan
+  getLoans: pgn => call(methodTypes.GET, `${userService}/api/loans?${formatPgn(pgn)}`),
+  createLoan: data => call(methodTypes.POST, `${userService}/api/loans`, data, true),
+  getLoan: id => call(methodTypes.GET, `${userService}/api/loans/${id}`,true),
+  updateLoan: (id, data) => call(methodTypes.PUT, `${userService}/api/loans/${id}`, data),
+
 };
 
 const formatPgn = pgn => (pgn ? `per_page=${pgn.pageSize}&page=${pgn.current}`:'');

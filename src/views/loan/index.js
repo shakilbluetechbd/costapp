@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { message, Button, Table } from 'antd';
 import Form from './form';
 import Base from '../../components/base';
-import costActions from '../../redux/cost/actions';
+import loanActions from '../../redux/loan/actions';
 import {
   PlusCircleTwoTone,
 } from '@ant-design/icons';
@@ -24,8 +24,8 @@ class create extends Component {
     }
   }
   componentDidMount() {
-    const { getCosts } = this.props;
-    getCosts(defaultPagination)
+    const { getLoans } = this.props;
+    getLoans(defaultPagination)
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -37,12 +37,12 @@ class create extends Component {
       update.isLoading = props.isLoading;
     }
 
-    if (props.costs) {
-      update.costs = props.costs;
+    if (props.loans) {
+      update.loans = props.loans;
       update.pagination = {
-        current: props.costs.data.current_page,
-        pageSize: props.costs.data.per_page,
-        total: props.costs.data.total,
+        current: props.loans.data.current_page,
+        pageSize: props.loans.data.per_page,
+        total: props.loans.data.total,
       };
     }
     update.isCreated = props.isCreated;
@@ -55,25 +55,25 @@ class create extends Component {
   }
 
   onSubmit = (data) => {
-    const { createCost } = this.props;
-    createCost(data);
+    const { createLoan } = this.props;
+    createLoan(data);
   }
 
   handleRefresh = (page) => {
     const { pagination } = this.state;
-    const { getCosts } = this.props;
+    const { getLoans } = this.props;
     pagination.current = page.current;
     pagination.pageSize = page.pageSize;
     this.setState({
       pagination,
     });
-    getCosts(page);
+    getLoans(page);
   }
 
   render() {
-    const { costs, pagination, isLoading } = this.state;
+    const { loans, pagination, isLoading } = this.state;
 
-    const buttons = (<Button onClick={()=>this.props.history.push("cost/create")} icon={<PlusCircleTwoTone />} type="primary" style={{ float: "right" }} >New</Button>)
+    const buttons = (<Button onClick={()=>this.props.history.push("loan/create")} icon={<PlusCircleTwoTone />} type="primary" style={{ float: "right" }} >New</Button>)
     const columns = [
       {
         title: 'Name',
@@ -101,13 +101,13 @@ class create extends Component {
         title: 'Action',
         dataIndex: 'id',
         key: 'id',
-        render: id => <Button type="primary" onClick={() => this.props.history.push(`/cost/${id}`)}>Edit</Button>,
+        render: id => <Button type="primary" onClick={() => this.props.history.push(`/loan/${id}`)}>Edit</Button>,
 
       },
     ];
 
     const tableProps = {
-      dataSource: costs && costs.data && costs.data.data && costs.data.data,
+      dataSource: loans && loans.data && loans.data.data && loans.data.data,
       pagination,
       loading: isLoading,
       onChange: (page) => {
@@ -116,7 +116,7 @@ class create extends Component {
       columns,
     };
     return (
-      <Base buttons={buttons} title="Cost" subtitle="List" >
+      <Base buttons={buttons} title="Loan" subtitle="List" >
         <Table {...tableProps} />
       </Base >
     );
@@ -125,8 +125,8 @@ class create extends Component {
 
 export default connect(
   state => ({
-    isLoading: state.cost.isLoading,
-    costs: state.cost.costs,
+    isLoading: state.loan.isLoading,
+    loans: state.loan.loans,
   }),
-  { getCosts: costActions.getCosts.request },
+  { getLoans: loanActions.getLoans.request },
 )(create);

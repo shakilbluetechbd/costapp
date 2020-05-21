@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { message, Button, Space, Spin, Skeleton } from 'antd';
 import Form from './form2';
 import Base from '../../components/base';
-import costActions from '../../redux/cost/actions';
+import incomeActions from '../../redux/income/actions';
 
 
 
@@ -18,10 +18,10 @@ class create extends Component {
 
   componentDidMount() {
     const {
-      match, getCost,
+      match, getIncome,
     } = this.props;
     const { id } = match.params;
-    getCost({ id });
+    getIncome({ id });
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -35,32 +35,32 @@ class create extends Component {
     // if (props.isLoading !== state.isLoading) {
     //   update.isLoading = props.isLoading;
     // }
-    if (props.cost && props.cost.id == id) {
-      update.cost = props.cost;
+    if (props.income && props.income.id == id) {
+      update.income = props.income;
     }
     update.isUpdated = props.isUpdated;
 
     if (props.isUpdated && !state.isUpdated) {
       message.success('This is a success message');
-      props.history.push('/cost');
+      props.history.push('/income');
 
     }
     return update;
   }
 
   onSubmit = (data) => {
-    const { updateCost, match } = this.props;
+    const { updateIncome, match } = this.props;
     const { id } = match.params;
-    updateCost({ id, data });
+    updateIncome({ id, data });
   }
 
   render() {
-    const { cost } = this.state;
+    const { income } = this.state;
     const { isLoading, isUpdating } = this.props;
 
     return (
-      <Base title="Cost" subtitle="Edit" isLoading={isLoading} isUpdating={isUpdating} >
-        {cost && <Form cost={cost} onSubmit={this.onSubmit} isLoading={isLoading} isUpdating={isUpdating} />}
+      <Base title="Income" subtitle="Edit" isLoading={isLoading} isUpdating={isUpdating} >
+        {income && <Form income={income} onSubmit={this.onSubmit} isLoading={isLoading} isUpdating={isUpdating} />}
       </Base>
     );
   }
@@ -69,13 +69,13 @@ class create extends Component {
 export default connect(
   state => ({
     // isLoading: state.newUser.isLoading,
-    isUpdated: state.cost.isUpdated,
-    isUpdating: state.cost.isUpdating,
-    isLoading: state.cost.isLoading,
-    cost: state.cost.cost,
+    isUpdated: state.income.isUpdated,
+    isUpdating: state.income.isUpdating,
+    isLoading: state.income.isLoading,
+    income: state.income.income,
   }),
   {
-    updateCost: costActions.updateCost.request,
-    getCost: costActions.getCost.request,
+    updateIncome: incomeActions.updateIncome.request,
+    getIncome: incomeActions.getIncome.request,
   },
 )(create);
