@@ -1,7 +1,7 @@
 import { methodTypes, call } from './api';
 // import { getBaseUrl, prefixes } from '../config';
 
-const userService = 'http://costapibd.herokuapp.com';
+const userService = 'https://costapibd.herokuapp.com';
 // const userService = 'http://127.0.0.1:8000';
 // const productService = getBaseUrl(prefixes.ProductPrefix);
 // const aaumUrl = getBaseUrl(ports.Aaum);
