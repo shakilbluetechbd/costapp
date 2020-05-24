@@ -49,6 +49,8 @@ export default {
   updateLoan: (id, data) => call(methodTypes.PUT, `${userService}/api/loans/${id}`, data),
 
   getEmployees: (pgn) => call(methodTypes.GET, `http://dummy.restapiexample.com/api/v1/employees`,pgn,false),
+  getReport: evt => call(methodTypes.POST, `${userService}/api/${evt.link}/report?${formatPgn(evt.pagination)}`, evt.payload),
+  getSearch: evt => call(methodTypes.POST, `${userService}/api/${evt.link}/search?${formatPgn(evt.pagination)}`, evt.payload),
 
 };
 

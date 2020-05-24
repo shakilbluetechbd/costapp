@@ -5,6 +5,7 @@ import costSagas from './cost/saga';
 import assetSagas from './asset/saga';
 import loanSagas from './loan/saga';
 import incomeSagas from './income/saga';
+import reportSagas from './report/saga';
 export default function* rootSaga() {
   yield all([
     practiceSagas(),
@@ -13,5 +14,6 @@ export default function* rootSaga() {
     assetSagas(),
     loanSagas(),
     incomeSagas(),
+    reportSagas(),
   ]);
 }

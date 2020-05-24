@@ -18,6 +18,12 @@ const data = [
     key: "13",
     title: "Income",
     link: "/income",
+  },
+
+  {
+    key: "14",
+    title: "Report",
+    link: "/report",
   }
 ]
 

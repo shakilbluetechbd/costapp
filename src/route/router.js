@@ -26,6 +26,9 @@ import EditIncome from '../views/income/edit';
 import Income from '../views/income';
 
 
+import Report from '../views/report';
+
+
 
 
 export const history = createHistory();
@@ -53,6 +56,9 @@ const AppRouter = () => (
         <PrivateRoute path="/Income/create" component={NewIncome} exact={true} /> 
         <PrivateRoute path="/Income" component={Income} exact={true} /> 
         <PrivateRoute path="/Income/:id" component={EditIncome} exact={true} /> 
+
+        <PrivateRoute path="/report" component={Report} exact={true} /> 
+
      {/*   <PrivateRoute path="/admin" component={AdminPage} />
      
       <PrivateRoute path="/addAmount/:id" component={EditProductPage} />
