@@ -24,7 +24,7 @@ import Asset from '../views/asset';
 import NewIncome from '../views/income/create';
 import EditIncome from '../views/income/edit';
 import Income from '../views/income';
-
+import Mobile from '../views/mobile/index';
 
 import Report from '../views/report';
 
@@ -39,6 +39,7 @@ const AppRouter = () => (
       <Switch>
         <PrivateRoute  path="/practice" component={Practice} exact={true} />
         <PublicRoute path="/login" component={Login} exact={true} />
+        <PublicRoute path="/mobile" component={Mobile} exact={true} />
         <PublicRoute path="/register" component={Register} exact={true} />  
         <PrivateRoute path="/" component={Home} exact={true} /> 
         <PrivateRoute path="/Cost/create" component={NewCost} exact={true} /> 

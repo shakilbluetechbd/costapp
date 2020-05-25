@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../../redux/auth/actions';
 // import axios from 'axios';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Layout, Menu, Breadcrumb, Row, Col, Spin, Space } from 'antd';
 
@@ -22,6 +22,7 @@ class Login extends Component {
     update.isLoggedIn = props.isLoggedIn;
 
     if (props.isLoggedIn && !state.isLoggedIn) {
+      message.success('This is a success message');
       props.history.push('/');
     }
     return update;
