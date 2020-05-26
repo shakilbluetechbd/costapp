@@ -35,10 +35,7 @@
         const action = authActions.register;
         try {
           const resp = yield call(services.register, evt.payload);
-          if (resp.error.length && resp.data) {
-            // const { access_token } = resp;
-            // const profile = decodeToken(access_token);
-            // setToken(access_token);
+          if (resp.success) {
             yield put(action.success(resp.data));
           } else {
             yield put(action.failure(resp.error));

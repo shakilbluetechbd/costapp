@@ -5,12 +5,19 @@ import actions from '../../redux/auth/actions';
 import { Form, Input, Button, Checkbox, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Layout, Menu, Breadcrumb, Row, Col, Spin, Space } from 'antd';
+import {isMobile} from 'react-device-detect';
+
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoggedIn: props.isLoggedIn,
+    }
+  }
+  componentDidMount() {
+    if (isMobile) {
+    this.props.history.push('/mobile/login');
     }
   }
 
