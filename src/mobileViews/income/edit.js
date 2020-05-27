@@ -42,7 +42,7 @@ class create extends Component {
 
     if (props.isUpdated && !state.isUpdated) {
       message.success('This is a success message');
-      props.history.push('/income');
+      props.history.push('/mobile/income');
 
     }
     return update;

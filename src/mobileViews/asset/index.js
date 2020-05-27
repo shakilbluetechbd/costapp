@@ -102,7 +102,7 @@ class create extends Component {
         title: 'Action',
         dataIndex: 'id',
         key: 'id',
-        render: id => <Button type="primary" onClick={() => this.props.history.push(`/asset/${id}`)}>Edit</Button>,
+        render: id => <Button type="primary" onClick={() => this.props.history.push(`/mobile/asset/${id}`)}>Edit</Button>,
 
       },
     ];

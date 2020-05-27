@@ -4,6 +4,7 @@ import { message, Button, Space, Spin, Skeleton } from 'antd';
 import Form from './form2';
 import Base from '../../components/mobile/base';
 import assetActions from '../../redux/asset/actions';
+import {Toast} from "antd-mobile"
 
 
 
@@ -41,8 +42,8 @@ class create extends Component {
     update.isUpdated = props.isUpdated;
 
     if (props.isUpdated && !state.isUpdated) {
-      message.success('This is a success message');
-      props.history.push('/asset');
+      Toast.success('success');
+      props.history.push('/mobile/asset');
 
     }
     return update;
