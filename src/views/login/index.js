@@ -4,7 +4,7 @@ import actions from '../../redux/auth/actions';
 // import axios from 'axios';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { Layout, Menu, Breadcrumb, Row, Col } from 'antd';
+import { Layout, Menu, Breadcrumb, Row, Col, Spin, Space } from 'antd';
 
 class Login extends Component {
   constructor(props) {
@@ -16,8 +16,8 @@ class Login extends Component {
 
   static getDerivedStateFromProps(props, state) {
     const update = {};
-    // if (props.isLoading !== state.isLoading) {
-    //   update.isLoading = props.isLoading;
+    // if (props.isLoggingIn !== state.isLoggingIn) {
+    //   update.isLoggingIn = props.isLoggingIn;
     // }
     update.isLoggedIn = props.isLoggedIn;
 
@@ -46,6 +46,18 @@ class Login extends Component {
     this.props.login(data);
   }
   render() {
+    
+    const { isLoggingIn } = this.props;
+   
+   
+   if (isLoggingIn  ){
+    return(
+      <Space style={{paddingTop:'350px',paddingLeft:'540px'  }} size="middle">
+      <Spin size="large" />
+    </Space>
+    )
+   }
+    
     return (
       <Layout style={{ minHeight: '100vh' }}>
       <Row>
@@ -101,7 +113,7 @@ class Login extends Component {
 
 export default connect(
   state => ({
-    // isLoading: state.newUser.isLoading,
+    isLoggingIn: state.auth.isLoggingIn,
     isLoggedIn: state.auth.isLoggedIn,
   }),
   { login: actions.login.request },

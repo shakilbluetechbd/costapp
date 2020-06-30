@@ -14,7 +14,7 @@ const headers = {
 };
 
 export const call = (methodType, url, data = {}, requireAuth = true) => {
-  if (requireAuth && !authHelpers.isLoggedIn()) {
+  if (requireAuth && !authHelpers.isLoggedIn()) { 
     throw 'Login required!';
   }
 

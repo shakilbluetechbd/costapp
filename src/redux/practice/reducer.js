@@ -23,6 +23,25 @@ export default function rolesReducer(state = initState, action) {
         error: action.errors,
       };
 
+      case actions.GET_EMPLOYEES_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case actions.GET_EMPLOYEES_SUCCESS:
+      return {
+        ...state,
+        employees: action.employees,
+        isLoading: false,
+        error: null,
+      };
+    case actions.GET_EMPLOYEES_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.errors,
+      };
+
     default:
       return state;
   }

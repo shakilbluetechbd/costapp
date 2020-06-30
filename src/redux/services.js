@@ -48,6 +48,8 @@ export default {
   getLoan: id => call(methodTypes.GET, `${userService}/api/loans/${id}`,true),
   updateLoan: (id, data) => call(methodTypes.PUT, `${userService}/api/loans/${id}`, data),
 
+  getEmployees: (pgn) => call(methodTypes.GET, `http://dummy.restapiexample.com/api/v1/employees`,pgn,false),
+
 };
 
 const formatPgn = pgn => (pgn ? `per_page=${pgn.pageSize}&page=${pgn.current}`:'');
