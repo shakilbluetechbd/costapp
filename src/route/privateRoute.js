@@ -2,14 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 // import Header from '../components/general/Header';
-import {
-    getToken, clearToken, decodeToken, setToken,
-} from '../helpers/auth';
-
-const check=()=>{
-    const token= getToken();
-    return !!token
-}
+import auth from '../helpers/auth';
 
 export const PrivateRoute = ({
   isAuthenticated,
@@ -17,9 +10,9 @@ export const PrivateRoute = ({
   ...rest
 }) => (
     <Route {...rest} component={(props) => (
-        check() ? (
+      auth.isLoggedIn() ? (
         <div>
-            {/*<Header/>*/}
+          {/*<Header/>*/}
           <Component {...props} />
         </div>
       ) : (

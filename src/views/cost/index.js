@@ -23,6 +23,7 @@ class create extends Component {
 
     }
   }
+  
   componentDidMount() {
     const { getCosts } = this.props;
     getCosts(defaultPagination)

@@ -33,6 +33,7 @@ class Login extends Component {
     //   update.isLoading = props.isLoading;
     // }
     update.isLoggedIn = props.isLoggedIn;
+    update.errors = props.errors;
 
     if (props.isLoggedIn && !state.isLoggedIn) {
       Toast.success('Logged in Successfully');
